@@ -1,0 +1,66 @@
+// Place all the styles related to the links controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.is-margin-bottom-0 {
+  margin-bottom: 0 !important;
+}
+
+.is-margin-bottom-1rem {
+  margin-bottom: 1rem !important;
+}
+
+.is-margin-top-1rem {
+  margin-top: 1rem !important;
+}
+
+.is-margin-left-1rem {
+  margin-left: 1rem !important;
+}
+
+.is-rounded-left {
+  border-top-left-radius: 6px !important;
+  border-bottom-left-radius: 6px !important;
+}
+
+.is-font-monospace {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.is-text-underline {
+  text-decoration: underline;
+}
+
+.is-max-height-10em {
+  max-height: 10em;
+}
+
+.is-rounded-100percent {
+  border-radius: 100% !important;
+}
+
+.is-truncated {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.is-margin-top-0-25em {
+  margin-top: 0.25em;
+}
+
+.is-border-dark {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+input::placeholder {
+  color: #ccc !important;
+}
+
+.is-overflow-y-hidden {
+  overflow-y: hidden;
+}
+
+.has-text-darker {
+  color: rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,83 @@
+<section class="section" data-controller="revealer">
+  <div class="container">
+    <form method="get" data-remote="true" data-turbolinks-animate-persist="true">
+      <%-[:auto_follow, :strip_utm].each do |name| -%>
+      <input type="hidden" name="<%= name %>" value="false">
+      <%- end -%>
+      <h1 class="title has-text-white">
+        <div class="columns is-gapless">
+          <div class="column">
+            <%= link_to t('site.title'), :root, class: 'has-text-white' %>
+          </div>
+          <div class="column">
+            <div class="field is-pulled-right is-margin-left-1rem is-margin-bottom-0">
+              <label class="checkbox is-size-7">
+                <input type="checkbox" name="strip_utm" value="true" <%= 'checked' if @strip_utm %>>
+                <%= t('labels.strip_utm') %>
+              </label>
+            </div>
+            <div class="field is-pulled-right is-margin-left-1rem is-margin-bottom-0">
+              <label class="checkbox is-size-7">
+                <input type="checkbox" name="auto_follow" value="true" <%= 'checked' if @auto_follow %>>
+                <%= t('labels.auto_follow') %>
+              </label>
+            </div>
+          </div>
+        </div>
+      </h1>
+      <div class="box is-margin-bottom-0 has-background-dark">
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <label class="label is-sr-only" for="url">
+              <%= t('common.url') %>
+            </label>
+            <input class="input is-rounded-left has-background-black-ter has-text-success is-font-monospace has-text-weight-bold is-border-dark" type="url" placeholder="<%= t('common.enter_url') %>" value="<%= @unravelled ? @unravelled[:items].first[:url] : '' %>" name="url" id="url" required autofocus>
+          </div>
+          <div class="control">
+            <button type="submit" class="button is-success has-icon is-loading-on-load" aria-label="<%= t('common.go') %>">
+              <span class="icon is-small">
+                <i class="fas fa-user-secret"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+        <%- if @unravelled -%>
+        <div class="is-font-monospace is-size-7 has-background-dark has-text-success"><%= highlight_relevant(@unravelled[:items].first[:headers]).html_safe %></div>
+        <%- end -%>
+      </div>
+    </form>
+    <%- if @unravelled -%>
+    <div class="has-text-centered has-text-white is-margin-bottom-1rem is-margin-top-1rem">
+      <button class="button is-outlined is-dark has-icon" data-action="click->revealer#toggle" <%= 'disabled' if @unravelled[:items].length - 1 < 2 %>>
+        <span class="icon">
+          <i class="fas fa-angle-double-down"></i>
+        </span>
+        <span>
+          <%= t('common.skipping') %>
+          <%= t('common.hops', count: @unravelled[:items].length - 1).html_safe %>
+          <%= t('common.and') %>
+          <%= t('common.cookies', count: @unravelled[:cookies].flatten.uniq.compact.reject{|cookie| cookie.empty?}.length).html_safe %>
+        </span>
+      </button>
+    </div>
+    <%- @unravelled[:items][1..-2].each_with_index do |item, i| -%>
+    <div class="is-hidden" data-target="revealer.reveal">
+      <div class="box has-background-dark">
+        <h1 class="title is-margin-bottom-0 is-size-6 has-text-weight-bold has-text-success is-font-monospace">
+          <%= item[:url] %>
+        </h1>
+        <div class="is-font-monospace is-size-7 has-background-dark has-text-success"><%= highlight_relevant(item[:headers]).html_safe %></div>
+      </div>
+      <div class="has-text-centered is-margin-bottom-1rem">
+        <i class="has-text-dark fas fa-angle-down fa-2x"></i>
+      </div>
+    </div>
+    <%- end -%>
+    <div class="box has-background-white has-text-centered">
+      <a href="<%= @unravelled[:final_url] %>" rel="noreferrer noopener" class="title has-text-link is-text-underline">
+        <%= @unravelled[:final_url] %>
+      </a>
+    </div>
+    <%- end -%>
+  </div>
+</section>

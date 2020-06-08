@@ -1,0 +1,21 @@
+en:
+  common:
+    skipping: Skipping
+    and: '&'
+    cookies:
+      one: 1 cookie
+      other: '%{count} cookies'
+    hops:
+      one: 1 hop
+      other: '%{count} hops'
+    headers: Headers
+    body: Body
+    enter_url: Enter a URL
+    go: Go
+    url: URL
+  site:
+    title: Safe Unblock
+    description: Safely unblock links.
+  labels:
+    auto_follow: Auto-follow
+    strip_utm: Remove UTM

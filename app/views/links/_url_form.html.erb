@@ -1,0 +1,49 @@
+<form method="get">
+  <%-[:auto_follow, :strip_utm].each do |name| -%>
+  <input type="hidden" name="<%= name %>" value="false">
+  <%- end -%>
+  <h1 class="title has-text-white">
+    <div class="columns is-gapless">
+      <div class="column">
+        <%= t('site.title') %>
+      </div>
+      <div class="column">
+        <div class="field is-pulled-right is-margin-left-1rem is-margin-bottom-0">
+          <label class="checkbox is-size-7">
+            <input type="checkbox" name="strip_utm" value="true" <%= 'checked' if @strip_utm %>>
+            <%= t('labels.strip_utm') %>
+          </label>
+        </div>
+        <div class="field is-pulled-right is-margin-left-1rem is-margin-bottom-0">
+          <label class="checkbox is-size-7">
+            <input type="checkbox" name="auto_follow" value="true" <%= 'checked' if @auto_follow %>>
+            <%= t('labels.auto_follow') %>
+          </label>
+        </div>
+      </div>
+    </div>
+  </h1>
+  <div class="box is-margin-bottom-0">
+    <div class="field has-addons">
+      <span class="has-background-dark has-text-white tag is-medium is-rounded-100percent">
+        1
+      </span>
+      <div class="control is-expanded">
+        <label class="label is-sr-only" for="url">
+          <%= t('common.url') %>
+        </label>
+        <input class="input is-rounded-left" type="url" placeholder="<%= t('common.enter_url') %>" value="<%= @url %>" name="url" id="url" required autofocus>
+      </div>
+      <div class="control">
+        <button type="submit" class="button is-link has-icon" aria-label="<%= t('common.go') %>">
+          <span class="icon is-small">
+            <i class="fas fa-user-secret"></i>
+          </span>
+        </button>
+      </div>
+    </div>
+    <%- if @unravelled -%>
+    <pre class="is-max-height-10em is-font-monospace is-size-7"><%= JSON.pretty_generate(@unravelled[:items].first[:headers]) %></pre>
+    <%- end -%>
+  </div>
+</form>
