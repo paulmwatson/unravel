@@ -1,5 +1,8 @@
 en:
   common:
+    built_by: Built by
+    bookmarklet: Bookmarklet
+    drag_to_toolbar: Bookmarklet, drag to your toolbar
     skipping: Skipping
     and: '&'
     cookies:
