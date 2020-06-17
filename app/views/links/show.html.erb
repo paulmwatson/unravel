@@ -4,27 +4,27 @@
       <%-[:auto_follow, :strip_utm].each do |name| -%>
       <input type="hidden" name="<%= name %>" value="false">
       <%- end -%>
-      <h1 class="title has-text-white">
-        <div class="columns is-gapless">
-          <div class="column">
+      <div class="columns is-gapless is-mobile">
+        <div class="column">
+          <h1 class="title has-text-white">
             <%= link_to t('site.title'), :root, class: 'has-text-white' %>
+          </h1>
+        </div>
+        <div class="column has-text-white">
+          <div class="field is-pulled-right is-margin-left-1rem is-margin-bottom-0">
+            <label class="checkbox is-size-7">
+              <input type="checkbox" name="strip_utm" value="true" <%= 'checked' if @strip_utm %>>
+              <%= t('labels.strip_utm') %>
+            </label>
           </div>
-          <div class="column">
-            <div class="field is-pulled-right is-margin-left-1rem is-margin-bottom-0">
-              <label class="checkbox is-size-7">
-                <input type="checkbox" name="strip_utm" value="true" <%= 'checked' if @strip_utm %>>
-                <%= t('labels.strip_utm') %>
-              </label>
-            </div>
-            <div class="field is-pulled-right is-margin-left-1rem is-margin-bottom-0">
-              <label class="checkbox is-size-7">
-                <input type="checkbox" name="auto_follow" value="true" <%= 'checked' if @auto_follow %>>
-                <%= t('labels.auto_follow') %>
-              </label>
-            </div>
+          <div class="field is-pulled-right is-margin-left-1rem is-margin-bottom-0">
+            <label class="checkbox is-size-7">
+              <input type="checkbox" name="auto_follow" value="true" <%= 'checked' if @auto_follow %>>
+              <%= t('labels.auto_follow') %>
+            </label>
           </div>
         </div>
-      </h1>
+      </div>
       <div class="box is-margin-bottom-0 has-background-dark">
         <div class="field has-addons">
           <div class="control is-expanded">

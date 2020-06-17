@@ -17,8 +17,20 @@
 
 <body class="turbolinks-animate">
   <%= yield %>
-  <footer class="footer has-background-link has-text-white-ter has-text-centered">
-    Built by <a href="https://paulmwatson.com" rel="noopener">Paul Watson</a>
+  <footer class="footer has-background-link has-text-grey-light has-text-centered">
+    <a href="javascript: window.location = 'https://unravel.paulmwatson.com?url=' + encodeURIComponent(window.location.toString());" class="has-text-white-ter"><%= t('site.title') %></a>
+    <small class="has-text-white-ter">
+      (<%= t('common.drag_to_toolbar') %>)
+    </small>
+    <br>
+    <small class="has-text-grey-lighter">
+      <%= t('common.built_by') %>
+      <a href="https://paulmwatson.com" class="has-text-grey-lighter" rel="noopener">
+        Paul Watson
+      </a>
+    </small>
+
+
   </footer>
 </body>
 
