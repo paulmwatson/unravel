@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+@import 'bulma/sass/utilities/_all';
+@import 'bulma/sass/base/_all.sass';
+
 .is-margin-bottom-0 {
   margin-bottom: 0 !important;
 }
