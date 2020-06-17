@@ -14,8 +14,8 @@ en:
     go: Go
     url: URL
   site:
-    title: Safe Unblock
-    description: Safely unblock links.
+    title: Unravel
+    description: Unravel links.
   labels:
     auto_follow: Auto-follow
     strip_utm: Remove UTM
