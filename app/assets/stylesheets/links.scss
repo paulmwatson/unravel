@@ -64,3 +64,8 @@ input::placeholder {
 .has-text-darker {
   color: rgba(0, 0, 0, 0.2);
 }
+
+footer a {
+  color: $white-ter;
+  text-decoration: underline;
+}
