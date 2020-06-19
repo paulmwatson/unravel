@@ -48,10 +48,13 @@ class LinksController < ApplicationController
     }
 
     if location = response.header[:location]
-      unravelling[:cookies] << CGI::Cookie.parse(response.header['set-cookie'])
       location = URI.parse(location)
       location.host = url.host unless location.host
       location.scheme = url.scheme unless location.scheme
+    end
+
+    if location && location.to_s != url.to_s
+      unravelling[:cookies] << CGI::Cookie.parse(response.header['set-cookie'])
       unravel(location.to_s, strip_utm, unravelling)
     else
       unravelling[:final_url] = url.to_s
